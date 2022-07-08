@@ -35,8 +35,8 @@ jobs:
       - name: O3DE Dependencies setup - CMake
         run: |
           wget -O \
-            - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | \
-            gpg --dearmor - | \
+            - https://apt.kitware.com/keys/kitware-archive-latest.asc 2> \
+            /dev/null | gpg --dearmor - | \
             sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
           echo \
             'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg]' \
