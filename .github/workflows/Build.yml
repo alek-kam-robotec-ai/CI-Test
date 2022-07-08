@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+# Get all the dependencies (ROS2, o3de etc.)
+# Initialize the empty project
+# attach the gem to it
+# build the project
+  build:
+    name: build
+    runs-on: ubuntu-20.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        rosdistro: [galactic]
+    env:
+      CHECKOUT_VERSION: v3
+      ROS_DISTRO: ${{ matrix.rosdistro }}
+    steps:
+      - name: O3DE ROS 2 Gem clone
+        uses: actions/checkout@${{ CHECKOUT_VERSION }}
+        with:
+          repository: RobotecAI/o3de-ros2-gem
+      - name: ROS 2 setup
+        uses: ros-tooling/setup-ros@v0.3
+        with:
+          required-ros-distribution: ${{ matrix.rosdistro }}
+
+
