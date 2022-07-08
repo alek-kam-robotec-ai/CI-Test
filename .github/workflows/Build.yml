@@ -6,11 +6,14 @@ on:
       - main
       # - development
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: build
     runs-on: ubuntu-20.04
-    timeout-minutes: 180
+    timeout-minutes: 240
     strategy:
       fail-fast: false
       matrix:
@@ -100,5 +103,5 @@ jobs:
           cmake
           --build $HOME/o3de-projects/EmptyProject/build/linux
           --config profile
-          --target EmptyProject.GameLauncher Editor AssetProcessor
+          --target EmptyProject.GameLauncher Editor
           -j 2
