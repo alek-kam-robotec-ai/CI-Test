@@ -78,7 +78,7 @@ jobs:
             -DLY_3RDPARTY_PATH=$HOME/o3de-packages
           o3de/python/get_python.sh
       - name: Register the Engine
-          run: o3de/scripts/o3de.sh register --this-engine
+        run: o3de/scripts/o3de.sh register --this-engine
       - name: Create an empty project
         run: |
           o3de/scripts/o3de.sh create-project \
