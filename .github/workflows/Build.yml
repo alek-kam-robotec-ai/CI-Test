@@ -71,14 +71,11 @@ jobs:
         uses: ros-tooling/setup-ros@v0.3
         with:
           required-ros-distributions: ${{ matrix.rosdistro }}
-      - name: Create the Linux build project for the Engine
+      - name: Register the Engine
         run: |
           mkdir $HOME/o3de-packages
-          cmake -B build/linux -S . -G "Ninja Multi-Config" \
-            -DLY_3RDPARTY_PATH=$HOME/o3de-packages
           o3de/python/get_python.sh
-      - name: Register the Engine
-        run: o3de/scripts/o3de.sh register --this-engine
+          o3de/scripts/o3de.sh register --this-engine
       - name: Create an empty project
         run: |
           o3de/scripts/o3de.sh create-project \
@@ -95,4 +92,4 @@ jobs:
             -DLY_3RDPARTY_PATH=$HOME/o3de-packages
       - name: Build the Project
         run: cmake --build build/linux --target MyProject.GameLauncher \
-          Editor --config profile -j 8
+          Editor --config profile -j 4
