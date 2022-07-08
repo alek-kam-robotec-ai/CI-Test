@@ -82,4 +82,4 @@ jobs:
       - name: Add the O3DE ROS2 Gem to the project
         run: |
           o3de/scripts/o3de.sh register --gem-path o3de-ros2-gem
-          o3de/scripts/o3de.sh register enable-gem -gn ROS2 -pp $HOME/o3de-projects/EmptyProject
+          o3de/scripts/o3de.sh enable-gem -gn ROS2 -pp $HOME/o3de-projects/EmptyProject
