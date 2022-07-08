@@ -22,13 +22,20 @@ jobs:
     env:
       ROS_DISTRO: ${{ matrix.rosdistro }}
     steps:
-      - name: O3DE ROS 2 Gem clone
+      - name: O3DE ROS 2 Gem checkout
         uses: actions/checkout@v3
         with:
           repository: RobotecAI/o3de-ros2-gem
+          path: o3de-ros2-gem
+      - name: O3DE checkout
+        uses: actions/checkout@v3
+        with:
+          repository: o3de/o3de
+          path: o3de
       - name: ROS 2 setup
         uses: ros-tooling/setup-ros@v0.3
         with:
-          required-ros-distribution: ${{ matrix.rosdistro }}
+          required-ros-distributions: ${{ matrix.rosdistro }}
+      - name: O3DE ROS 2 
 
 
