@@ -28,6 +28,14 @@ jobs:
         with:
           repository: o3de/o3de
           path: o3de
+      - name: O3DE git-lfs pull
+        run: |
+          cd o3de
+          git lfs pull
+          cd ..
+      - name: O3DE Dependencies setup - git-lfs
+        run: |
+          sudo apt-get install git-lfs
       - name: O3DE Dependencies setup - CMake
         run: |
           wget -O \
@@ -85,7 +93,7 @@ jobs:
           o3de/scripts/o3de.sh register --gem-path o3de-ros2-gem
           o3de/scripts/o3de.sh enable-gem -gn ROS2 \
             -pp $HOME/o3de-projects/EmptyProject
-      - name: Create the Linux build project for the Engine
+      - name: Create the Linux build project for the Project
         run: |
           cd $HOME/o3de-projects/EmptyProject
           cmake -B build/linux -S . -G "Ninja Multi-Config" \
