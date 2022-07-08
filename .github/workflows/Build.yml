@@ -53,7 +53,9 @@ jobs:
         run: |
           pushd /tmp
           LIBFFI_PACKAGE_NAME=libffi6_3.2.1-8_amd64.deb
-          LIBFFI_PACKAGE_URL=http://mirrors.kernel.org/ubuntu/pool/main/libf/libffi/
+          LIBFFI_PACKAGE_URL="http://mirrors.kernel.org"
+          LIBFFI_PACKAGE_URL="${LIBFFI_PACKAGE_URL}/ubuntu/pool/main"
+          LIBFFI_PACKAGE_URL="${LIBFFI_PACKAGE_URL}/libf/libffi/"
           curl \
             --location $LIBFFI_PACKAGE_URL/$LIBFFI_PACKAGE_NAME \
             -o $LIBFFI_PACKAGE_NAME
