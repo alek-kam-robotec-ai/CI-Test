@@ -3,7 +3,8 @@ name: Build
 on:
   push:
     branches:
-      - development
+      - main
+      # - development
 
 jobs:
 # Get all the dependencies (ROS2, o3de etc.)
