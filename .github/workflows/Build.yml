@@ -77,4 +77,5 @@ jobs:
       #     required-ros-distributions: ${{ matrix.rosdistro }}
       - name: Create an empty project
         run: |
+          o3de/python/get_python.sh
           o3de/scripts/o3de.sh create-project --project-path $HOME/o3de-projects/MyProject
