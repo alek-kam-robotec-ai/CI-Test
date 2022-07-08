@@ -72,6 +72,7 @@ jobs:
         with:
           required-ros-distributions: ${{ matrix.rosdistro }}
       - name: Create the Linux build project for the Engine
+        run: |
           mkdir $HOME/o3de-packages
           cmake -B build/linux -S . -G "Ninja Multi-Config" \
             -DLY_3RDPARTY_PATH=$HOME/o3de-packages
