@@ -36,6 +36,5 @@ jobs:
         uses: ros-tooling/setup-ros@v0.3
         with:
           required-ros-distributions: ${{ matrix.rosdistro }}
-      - name: O3DE ROS 2 
 
 
