@@ -93,4 +93,4 @@ jobs:
       - name: Build the Project
         run: >
           cmake --build build/linux --config profile
-          --target EmptyProject Editor AssetProcessor -j 2
+          --target EmptyProject.GameLauncher Editor AssetProcessor -j 2
