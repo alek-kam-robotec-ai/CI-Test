@@ -34,7 +34,6 @@ jobs:
           path: o3de
       - name: O3DE Dependencies setup - CMake
         run: |
-          sudo apt-get remove cmake
           wget -O - \
             https://apt.kitware.com/keys/kitware-archive-latest.asc \
             2>/dev/null | gpg --dearmor - | \
