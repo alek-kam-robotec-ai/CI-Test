@@ -71,15 +71,27 @@ jobs:
         uses: ros-tooling/setup-ros@v0.3
         with:
           required-ros-distributions: ${{ matrix.rosdistro }}
+      - name: Create the Linux build project for the Engine
+          mkdir $HOME/o3de-packages
+          cmake -B build/linux -S . -G "Ninja Multi-Config" \
+            -DLY_3RDPARTY_PATH=$HOME/o3de-packages
+          o3de/python/get_python.sh
+      - name: Register the Engine
+          run: scripts/o3de.sh register --this-engine
       - name: Create an empty project
         run: |
-          o3de/python/get_python.sh
-          o3de/scripts/o3de.sh create-project --project-path $HOME/o3de-projects/EmptyProject
+          o3de/scripts/o3de.sh create-project \
+            --project-path $HOME/o3de-projects/EmptyProject
       - name: Add the O3DE ROS2 Gem to the Project
         run: |
           o3de/scripts/o3de.sh register --gem-path o3de-ros2-gem
-          o3de/scripts/o3de.sh enable-gem -gn ROS2 -pp $HOME/o3de-projects/EmptyProject
-      - name: Build the Project with The Gem
+          o3de/scripts/o3de.sh enable-gem -gn ROS2 \
+            -pp $HOME/o3de-projects/EmptyProject
+      - name: Create the Linux build project for the Engine
         run: |
           cd $HOME/o3de-projects/EmptyProject
-          cmake -B build/linux -S . -G "Ninja Multi-Config" -DLY_3RDPARTY_PATH=$HOME/o3de-packages
+          cmake -B build/linux -S . -G "Ninja Multi-Config" \
+            -DLY_3RDPARTY_PATH=$HOME/o3de-packages
+      - name: Build the Project
+        run: cmake --build build/linux --target MyProject.GameLauncher \
+          Editor --config profile -j 8
