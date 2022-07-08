@@ -22,25 +22,23 @@ jobs:
     env:
       ROS_DISTRO: ${{ matrix.rosdistro }}
     steps:
-      - name: O3DE ROS 2 Gem checkout
-        uses: actions/checkout@v3
-        with:
-          repository: RobotecAI/o3de-ros2-gem
-          path: o3de-ros2-gem
-      - name: O3DE checkout
-        uses: actions/checkout@v3
-        with:
-          repository: o3de/o3de
-          path: o3de
+      # - name: O3DE ROS 2 Gem checkout
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: RobotecAI/o3de-ros2-gem
+      #     path: o3de-ros2-gem
+      # - name: O3DE checkout
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: o3de/o3de
+      #     path: o3de
       - name: O3DE Dependencies setup - CMake
         run: |
-          wget -O - \
-            https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | \
+          wget -O \
+            - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | \
             gpg --dearmor - | \
             sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
-          echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] \
-            https://apt.kitware.com/ubuntu/ focal main' | \
-            sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
+          echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
           sudo apt-get update
           sudo apt-get install cmake
       # - name: O3DE Dependencies setup - Clang
