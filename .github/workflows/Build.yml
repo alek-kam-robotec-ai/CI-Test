@@ -51,6 +51,13 @@ jobs:
           curl --location $LIBFFI_PACKAGE_URL/$LIBFFI_PACKAGE_NAME -o $LIBFFI_PACKAGE_NAME
           sudo apt install ./$LIBFFI_PACKAGE_NAME
           popd
+      - name: O3DE Dependencies setup - additional library dependencies
+        run: |
+          sudo apt-get install libglu1-mesa-dev \
+            libxcb-xinerama0 libxcb-xinput0 libxcb-xinput-dev \
+            libxcb-xfixes0-dev libxcb-xkb-dev libxkbcommon-dev \
+            libxkbcommon-x11-dev libfontconfig1-dev libcurl4-openssl-dev \
+            libsdl2-dev zlib1g-dev mesa-common-dev libssl-dev
       - name: O3DE ROS2 GEM Dependencies setup - ROS2
         uses: ros-tooling/setup-ros@v0.3
         with:
