@@ -33,9 +33,6 @@ jobs:
           cd o3de
           git lfs pull
           cd ..
-      - name: O3DE Dependencies setup - git-lfs
-        run: |
-          sudo apt-get install git-lfs
       - name: O3DE Dependencies setup - CMake
         run: |
           wget -O \
@@ -100,5 +97,8 @@ jobs:
             -DLY_3RDPARTY_PATH=$HOME/o3de-packages
       - name: Build the Project
         run: >
-          cmake --build build/linux --config profile
-          --target EmptyProject.GameLauncher Editor AssetProcessor -j 2
+          cmake
+          --build $HOME/o3de-projects/EmptyProject/build/linux
+          --config profile
+          --target EmptyProject.GameLauncher Editor AssetProcessor
+          -j 2
