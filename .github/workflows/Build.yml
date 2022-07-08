@@ -7,10 +7,6 @@ on:
       # - development
 
 jobs:
-# Get all the dependencies (ROS2, o3de etc.)
-# Initialize the empty project
-# attach the gem to it
-# build the project
   build:
     name: build
     runs-on: ubuntu-20.04
@@ -71,15 +67,19 @@ jobs:
       - name: O3DE Dependencies setup - Ninja Build System
         run: |
           sudo apt-get install ninja-build
-      # - name: O3DE ROS2 GEM Dependencies setup - ROS2
-      #   uses: ros-tooling/setup-ros@v0.3
-      #   with:
-      #     required-ros-distributions: ${{ matrix.rosdistro }}
+      - name: O3DE ROS2 GEM Dependencies setup - ROS2
+        uses: ros-tooling/setup-ros@v0.3
+        with:
+          required-ros-distributions: ${{ matrix.rosdistro }}
       - name: Create an empty project
         run: |
           o3de/python/get_python.sh
           o3de/scripts/o3de.sh create-project --project-path $HOME/o3de-projects/EmptyProject
-      - name: Add the O3DE ROS2 Gem to the project
+      - name: Add the O3DE ROS2 Gem to the Project
         run: |
           o3de/scripts/o3de.sh register --gem-path o3de-ros2-gem
           o3de/scripts/o3de.sh enable-gem -gn ROS2 -pp $HOME/o3de-projects/EmptyProject
+      - name: Build the Project with The Gem
+        run: |
+          cd $HOME/o3de-projects/EmptyProject
+          cmake -B build/linux -S . -G "Ninja Multi-Config" -DLY_3RDPARTY_PATH=$HOME/o3de-packages
