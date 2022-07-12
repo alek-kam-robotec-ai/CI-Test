@@ -98,14 +98,15 @@ jobs:
           cd $HOME/o3de-projects/EmptyProject
           cmake -B build/linux -S . -G "Ninja Multi-Config" \
             -DLY_3RDPARTY_PATH=$HOME/o3de-packages
-      # - name: Free up space
-      #   run: |
-      #     sudo rm -rf "/usr/local/share/boost"
-      #     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      - name: Free up space
+        run: |
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /usr/share/dotnet
       - name: Build the Project
         run: >
           cmake
           --build $HOME/o3de-projects/EmptyProject/build/linux
           --config profile
-          --target EmptyProject.GameLauncher AssetProcessor
+          --target EmptyProject.GameLauncher Editor AssetProcessor
           -j 2
