@@ -108,5 +108,5 @@ jobs:
           cmake
           --build $HOME/o3de-projects/EmptyProject/build/linux
           --config profile
-          --target EmptyProject.GameLauncher Editor AssetProcessor
+          --target EmptyProject.GameLauncher Editor
           -j 2
