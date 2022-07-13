@@ -23,5 +23,5 @@ jobs:
         uses: langroodi/doxygenize@v1.6.3
         with:
           doxygenconf: ci-test/Doxyfile
-          htmloutput: ./docs/
-          ghpagesdir: ./docs/githubpages
+          htmloutput: ci-test/docs/
+          ghpagesdir: ci-test/docs/githubpages
