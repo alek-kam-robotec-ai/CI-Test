@@ -17,11 +17,9 @@ jobs:
           path: o3de-ros2-gem
       - name: Checkout this repo
         uses: actions/checkout@v3
-        with:
-          path: ci-test
       - name: Generate documentation
         uses: langroodi/doxygenize@v1.6.3
         with:
-          doxygenconf: ci-test/Doxyfile
-          htmloutput: ci-test/docs/
-          ghpagesdir: ci-test/docs/githubpages
+          doxygenconf: Doxyfile
+          htmloutput: docs/
+          ghpagesdir: docs/githubpages
