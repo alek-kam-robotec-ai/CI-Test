@@ -1,4 +1,3 @@
-warning: source ./MAIN-PAGE.md is not a readable file or directory... skipping.
 /home/runner/work/CI-Test/CI-Test/o3de-ros2-gem/Code/Source/URDF/Constants.h:57: warning: Compound ROS2::Fbx::Constants::Object is not documented.
 /home/runner/work/CI-Test/CI-Test/o3de-ros2-gem/Code/Source/URDF/Constants.h:48: warning: Compound ROS2::Fbx::Constants::Material is not documented.
 /home/runner/work/CI-Test/CI-Test/o3de-ros2-gem/Code/Source/URDF/Constants.h:36: warning: Compound ROS2::Fbx::Constants::GlobalSettings is not documented.
