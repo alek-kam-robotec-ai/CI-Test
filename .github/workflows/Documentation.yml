@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: write
 
 jobs:
   docgen:
@@ -12,12 +14,22 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v3
+        with:
+          ref: gh-pages
       - name: Checkout gem repo
         uses: actions/checkout@v3
         with:
           repository: RobotecAI/o3de-ros2-gem
           path: o3de-ros2-gem
+      - name: Setup doxygen
+        run: |
+          sudo apt update
+          sudo apt install -y doxygen wget
       - name: Generate documentation
-        uses: langroodi/doxygenize@v1.6.3
+        run: doxygen Doxyfile
+      - name: Remove the gem repo
+        run: rm -r o3de-ros2-gem
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
-          ghpagesdir: ./
+          folder: .
