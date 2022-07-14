@@ -9,6 +9,7 @@ var annotated_dup =
         [ "NodeWithId", "struct_r_o_s2_1_1_fbx_1_1_node_with_id.html", "struct_r_o_s2_1_1_fbx_1_1_node_with_id" ],
         [ "RawString", "struct_r_o_s2_1_1_fbx_1_1_raw_string.html", "struct_r_o_s2_1_1_fbx_1_1_raw_string" ]
       ] ],
+      [ "CameraCaptureScheduler", "class_r_o_s2_1_1_camera_capture_scheduler.html", "class_r_o_s2_1_1_camera_capture_scheduler" ],
       [ "CameraSensor", "class_r_o_s2_1_1_camera_sensor.html", "class_r_o_s2_1_1_camera_sensor" ],
       [ "CameraSensorDescription", "struct_r_o_s2_1_1_camera_sensor_description.html", "struct_r_o_s2_1_1_camera_sensor_description" ],
       [ "ControlConfiguration", "struct_r_o_s2_1_1_control_configuration.html", "struct_r_o_s2_1_1_control_configuration" ],

@@ -29,6 +29,9 @@ var hierarchy =
     [ "ROS2::Fbx::Constants::FbxHeader", "struct_r_o_s2_1_1_fbx_1_1_constants_1_1_fbx_header.html", null ],
     [ "ROS2::Fbx::Constants::GlobalSettings", "struct_r_o_s2_1_1_fbx_1_1_constants_1_1_global_settings.html", null ],
     [ "Handler", null, [
+      [ "ROS2::ROS2SystemComponent", "class_r_o_s2_1_1_r_o_s2_system_component.html", null ]
+    ] ],
+    [ "Handler", null, [
       [ "ROS2::TwistNotificationHandler", "class_r_o_s2_1_1_twist_notification_handler.html", null ]
     ] ],
     [ "Handler", null, [
@@ -37,7 +40,7 @@ var hierarchy =
       [ "ROS2::ROS2SystemComponent", "class_r_o_s2_1_1_r_o_s2_system_component.html", null ]
     ] ],
     [ "Handler", null, [
-      [ "ROS2::ROS2SystemComponent", "class_r_o_s2_1_1_r_o_s2_system_component.html", null ]
+      [ "ROS2::CameraCaptureScheduler", "class_r_o_s2_1_1_camera_capture_scheduler.html", null ]
     ] ],
     [ "ROS2::IRobotControl", "class_r_o_s2_1_1_i_robot_control.html", [
       [ "ROS2::RobotControl< geometry_msgs::msg::Twist >", "class_r_o_s2_1_1_robot_control.html", [
