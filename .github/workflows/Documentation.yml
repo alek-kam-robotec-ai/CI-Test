@@ -3,23 +3,25 @@ name: Documentation
 on:
   push:
     branches:
-      - main
+      - development
+
 permissions:
   contents: write
 
 jobs:
-  docgen:
-    name: generate documentation test
+  docsgen:
+    name: Generate documentation and publish it to Github Pages
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout this repo
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
           ref: gh-pages
-      - name: Checkout gem repo
+      - name: Checkout development branch
         uses: actions/checkout@v3
         with:
           repository: RobotecAI/o3de-ros2-gem
+          reg: development
           path: o3de-ros2-gem
       - name: Setup doxygen and graphviz
         run: |
@@ -28,7 +30,7 @@ jobs:
           sudo apt install graphviz
       - name: Generate documentation
         run: doxygen Doxyfile
-      - name: Remove the gem repo
+      - name: Remove the unused development branch folder
         run: rm -r o3de-ros2-gem
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.3.4
