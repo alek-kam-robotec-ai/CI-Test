@@ -1,0 +1,37 @@
+name: CodeChecks
+
+on:
+  push:
+    branches:
+      - linting-test
+
+permissions:
+  contents: read
+
+jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: robotecai/o3de-ros2-gem
+          ref: development
+      - name: Run clang-format
+        uses: HorstBaerbel/action-clang-format@1.5
+        with:
+          scandir: '.'
+          excludedirs: 'build'
+          extensions: 'cpp,h'
+          style: 'file'
+
+  license:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: robotecai/o3de-ros2-gem
+          ref: development
+      - uses: apache/skywalking-eyes@v0.4.0
+        with:
+          mode: check
+          config: .licenserc.yaml
